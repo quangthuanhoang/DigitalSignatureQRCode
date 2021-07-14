@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_gravity="center_horizontal"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/txt_QR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Nhập thông tin"
+        android:padding="12dp"
+       />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tạo QRCode"
+        android:layout_marginTop="16dp"
+       />
+    <Button
+        android:id="@+id/btnScan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="scanner"
+        android:text="Quét QRCode"
+        android:layout_marginTop="16dp"
+        />
+    <Button
+        android:id="@+id/scanGallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quét ảnh có sẵn"
+        android:onClick="scanGallery"
+        android:layout_marginTop="16dp"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_ouput"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveQR"
+        android:text="Lưu QRCode"
+        android:visibility="invisible"
+        />
+
+</LinearLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScanFormGallery">
+
+    <TextView
+        android:id="@+id/textQR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:layout_margin="10dp"
+        tools:layout_editor_absoluteX="194dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/btnVerify"
+        android:layout_below="@+id/textQR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xác thực"
+        android:layout_margin="10dp"
+        android:onClick="verify"
+        android:layout_alignParentRight="true"
+        android:padding="10dp"
+        tools:layout_editor_absoluteX="256dp"
+        tools:layout_editor_absoluteY="138dp" />
+</RelativeLayout>
