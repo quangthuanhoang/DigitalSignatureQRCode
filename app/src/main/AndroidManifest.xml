@@ -19,9 +19,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DigitalSignatureQRCode">
-        <activity android:name=".ScanFormGallery"></activity>
-        <activity android:name=".ScanQRCodeActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".CreateQRCodeActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".ScanFormGalleryActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ScanQRCodeActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".MainActivity"
+         >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

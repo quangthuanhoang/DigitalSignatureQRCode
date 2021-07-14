@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ScanFormGallery">
+    tools:context=".ScanFormGalleryActivity">
 
     <TextView
         android:id="@+id/textQR"
@@ -19,13 +19,15 @@
     <Button
         android:id="@+id/btnVerify"
         android:layout_below="@+id/textQR"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:text="Xác thực"
-        android:layout_margin="10dp"
+        android:textAllCaps="false"
+        android:layout_margin="16dp"
         android:onClick="verify"
+        android:textSize="15sp"
         android:layout_alignParentRight="true"
-        android:padding="10dp"
+        android:padding="16dp"
         tools:layout_editor_absoluteX="256dp"
         tools:layout_editor_absoluteY="138dp" />
 </RelativeLayout>

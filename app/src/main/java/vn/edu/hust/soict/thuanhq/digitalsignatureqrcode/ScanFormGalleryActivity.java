@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import javax.xml.bind.DatatypeConverter;
 
-public class ScanFormGallery extends AppCompatActivity {
+public class ScanFormGalleryActivity extends AppCompatActivity {
     TextView textQR;
     Dialog dialog;
     @Override

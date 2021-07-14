@@ -37,10 +37,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.math.BigInteger;
 import java.util.Hashtable;
-
-import javax.xml.bind.DatatypeConverter;
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "MESSAGE";
@@ -53,72 +50,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button = findViewById(R.id.button);
-        btnSave = findViewById(R.id.saveQR);
-        editText = findViewById(R.id.txt_QR);
-        imageView = findViewById(R.id.iv_ouput);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String sText = editText.getText().toString().trim();
-                SignVerify signVerify = new SignVerify();
-                String textQR = signVerify.sign(sText) + "|";
-                textQR += sText;
-                MultiFormatWriter writer = new MultiFormatWriter();
-                try {
-                    Hashtable<EncodeHintType, String> hints = new Hashtable<EncodeHintType, String>();
-                    hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
-                    BitMatrix matrix = writer.encode(textQR, BarcodeFormat.QR_CODE, 350, 350, hints);
-                    BarcodeEncoder encoder = new BarcodeEncoder();
-                    Bitmap bitmap = encoder.createBitmap(matrix);
-                    imageView.setImageBitmap(bitmap);
-                    InputMethodManager manager = (InputMethodManager) getSystemService(
-                            Context.INPUT_METHOD_SERVICE
-                    );
-                    manager.hideSoftInputFromWindow(editText.getApplicationWindowToken(), 0);
-                    btnSave.setVisibility(View.VISIBLE);
-                } catch (WriterException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveToGallery();
-            }
-        });
     }
-
-    public void saveToGallery() {
-        BitmapDrawable bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
-        Bitmap bitmap = bitmapDrawable.getBitmap();
-        FileOutputStream outputStream = null;
-        File file = Environment.getExternalStorageDirectory();
-        File dir = new File(file.getAbsolutePath() + "/Download");
-        dir.mkdir();
-        String filename = String.format("%d.png", System.currentTimeMillis());
-        File outFile = new File(dir, filename);
-        try {
-            outputStream = new FileOutputStream(outFile);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-        try {
-            outputStream.flush();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public void scanner(View view) {
         Intent intent = new Intent(this, ScanQRCodeActivity.class);
         startActivity(intent);
@@ -148,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     Reader reader = new MultiFormatReader();
                     Result result = reader.decode(bitmap);
                     contents = result.getText();
-                    Intent intent = new Intent(this, ScanFormGallery.class);
+                    Intent intent = new Intent(this, ScanFormGalleryActivity.class);
                     intent.putExtra(EXTRA_MESSAGE, contents);
                     startActivity(intent);
 
@@ -157,10 +89,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Đã xảy ra sự cố", Toast.LENGTH_LONG).show();
             }
         } else {
-            Toast.makeText(MainActivity.this, "You haven't picked Image", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Bạn chưa chọn ảnh nào!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void createQRCode(View view) {
+        Intent intent = new Intent(this, CreateQRCodeActivity.class);
+        startActivity(intent);
     }
 }

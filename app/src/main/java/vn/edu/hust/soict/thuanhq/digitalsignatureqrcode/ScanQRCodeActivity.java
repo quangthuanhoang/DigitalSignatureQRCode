@@ -32,13 +32,13 @@ import java.util.List;
 import javax.xml.bind.DatatypeConverter;
 
 public class ScanQRCodeActivity extends AppCompatActivity {
-     SurfaceView surfaceView;
-     CameraSource cameraSource;
-     TextView textView;
-     ScrollView scrollView;
-     Dialog dialog;
-     BarcodeDetector barcodeDetector;
-    String a;
+     private SurfaceView surfaceView;
+     private CameraSource cameraSource;
+     private TextView textView;
+     private ScrollView scrollView;
+     private Dialog dialog;
+     private BarcodeDetector barcodeDetector;
+     private String a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
