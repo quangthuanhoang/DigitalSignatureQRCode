@@ -10,6 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="400dp" />
 
+    <TextView
+        android:id="@+id/textFocus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:layout_below="@+id/camerapreview"
+        android:text="Di chuyển Camera vào vùng chứa mã QR để quét"
+        android:gravity="center"
+        />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +36,7 @@
                android:layout_height="wrap_content"
                android:layout_marginTop="20dp"
                android:padding="10dp"
-               android:text="Di chuyển Camera vào vùng chứa mã QR để quét"
+               android:text="Text Scan"
                android:textSize="18sp"
                android:gravity="center"
                />
@@ -35,8 +46,8 @@
                android:layout_height="wrap_content"
                android:layout_below="@+id/textScan"
                android:text="Xác thực"
-               android:padding="16dp"
-               android:textSize="15sp"
+               android:padding="10dp"
+               android:textSize="16sp"
                android:textAllCaps="false"
                android:layout_alignRight="@+id/textScan"
                android:layout_margin="16dp"

@@ -34,7 +34,8 @@ import javax.xml.bind.DatatypeConverter;
 public class ScanQRCodeActivity extends AppCompatActivity {
      private SurfaceView surfaceView;
      private CameraSource cameraSource;
-     private TextView textView;
+     private TextView textScan;
+     private TextView textFocus;
      private ScrollView scrollView;
      private Dialog dialog;
      private BarcodeDetector barcodeDetector;
@@ -44,7 +45,8 @@ public class ScanQRCodeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_q_r_code);
         surfaceView = findViewById(R.id.camerapreview);
-        textView = findViewById(R.id.textScan);
+        textScan = findViewById(R.id.textScan);
+        textFocus = findViewById(R.id.textFocus);
         scrollView = findViewById(R.id.scrollText);
         dialog = new Dialog(this);
 
@@ -85,15 +87,16 @@ public class ScanQRCodeActivity extends AppCompatActivity {
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 SparseArray<Barcode> qrCodes = detections.getDetectedItems();
                 if(qrCodes.size() != 0) {
-                    textView.post(new Runnable() {
+                    textScan.post(new Runnable() {
                         @Override
                         public void run() {
                             Vibrator vibrator = (Vibrator)getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
                             vibrator.vibrate(1000);
                             surfaceView.setVisibility(View.INVISIBLE);
+                            textFocus.setVisibility(View.INVISIBLE);
                             scrollView.setVisibility(View.VISIBLE);
-                            textView.setText(qrCodes.valueAt(0).displayValue);
-                            a = textView.getText().toString();
+                            textScan.setText(qrCodes.valueAt(0).displayValue);
+                            a = textScan.getText().toString();
                         }
                     });
                 }
